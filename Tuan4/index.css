@@ -92,6 +92,7 @@ box-shadow: 1px 1px 1px rgba(0, 0, 0, 0, 1);
     margin-bottom: 20px;
     cursor: pointer;
 }
-.content .content-item button:hover{
+.content .content-item button:hover{ 
     opacity: 0.5;
 }
+
