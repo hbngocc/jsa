@@ -1,7 +1,7 @@
 let btn = document.querySelectorAll(".btn");
 let quantity = document.querySelector(".quantity");
 let content = document.querySelector(".content");
-let cartArray = JSON.parse(localStorage.getItem("cart")) || []
+let cartArray = JSON.parse(localStorage.getItem("cart")) || [];
 let currentQuantity = +quantity.innerText;
 
 
@@ -51,13 +51,16 @@ function loadDanhSachSanPham() {
   }
 
   let btnAddItems = document.querySelectorAll(".btn");
-  for (let i=0; i< btnAddItems.length; i++){
+  for (let i = 0; i < btnAddItems.length; i++) {
     let btnItem = btnAddItems[i];
     btnItem.addEventListener("click", function () {
       let idItem = btnItem.id;
-      for (let i=0; i<data.length; i++){
+      // bien data la file data.js
+      for (let i = 0; i < data.length; i++) {
+        // kiem tra cai id cua nguoi dung click vao va id cua data co trung hay ko
         let idData = data[i].id;
-        if (adItem == isData){
+        if (idItem == idData) {
+          // neu trung thi dua vao gio hang
           cartArray.push(data[i]);
           quantity.innerText = cartArray.length;
           localStorage.setItem("cart", JSON.stringify(cartArray));
@@ -67,14 +70,75 @@ function loadDanhSachSanPham() {
   }
 }
 
-function loadQuantity (){
+function loadQuantity() {
   let quantityArray = JSON.parse(localStorage.getItem("cart"));
-  if (quantityArray){
+  if (quantityArray) {
     quantity.innerText = quantityArray.length;
   } else {
     quantity.innerText = 0;
   }
 }
+
+function checkLocalStorageCart() {
+  if (localStorage.getItem("cart")) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function loadCart() {
+  // khi ma ham nay duoc goi la
+  // lay element cart-product-wrapped = "cart-wrapper"
+  let cartWrapper = document.querySelector(".cart-product-wrapped");
+  let isChecked = checkLocalStorageCart();
+  let cartArray = JSON.parse(localStorage.getItem("cart"));
+  let html = ""
+  // no se kiem tra tren localstorage co key cart hay khong ?
+  if (isChecked) {
+    // neu co
+    // thi no se
+    // cart-wrapper.innerHTML = `ul danh sach`
+    html += `<ul class="cart-products">;`
+    for (let i = 0; i < cartArray.length; i++) {
+      let image = cartArray[i].img;
+      let name = cartArray[i].name;
+      let price = cartArray[i].price;
+      html += `
+      <li class="product-item">
+      <img src=$(image) alt="sanpham1">
+      <div class="product-body">
+      <p class="product-name">$(name)</p>
+      <div class="productQuantityPrice">
+      <p class="price">$(price)</p>
+      <p class="quantityProductCart">x 1</p>
+      </div>
+      </div>
+    <i class="fa-solid fa-trash deleteCart"></i>
+    </li>
+    `;
+    }
+    html += `</ul>
+  <p class="totalprice">
+    Tổng tiền : 1000$
+  </p>
+  <button class="pay">
+    Thanh toán
+  </button> `;
+    cartWrapper.innerHTML = html;
+  } else {
+    // khong co 
+    // thi no se 
+    // cart-wrapper.innerHTML =<img />
+    html += `
+    <img class="no-product-image" src="https://www.tharagold.in/assets/img/no-product-found.png"/>
+    `;
+    cartWrapper.innerHTML = html;
+  }
+}
+
+// ham chay
 loadQuantity();
 loadDanhSachSanPham();
 checkLogin();
+loadCart();
