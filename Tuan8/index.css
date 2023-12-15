@@ -27,13 +27,14 @@ body {
 }
 
 .header .middleHeader{
-  
     position:relative;
+    cursor: pointer;
 }
 
-.header .middleHeader:hover .cart-product-wrapped {
-    display: block;
+.header .middleHeader:hover .cart-product-wrapper {
+    display:block;
 }
+
 
 .header .middleHeader .quantity{
     position:absolute;
@@ -59,81 +60,74 @@ body {
 /* cart */
 
 .middleHeader .cart-product-wrapper{
-    width: 400px;
-    position: absolute;
-    background-color: #555;
-    right: 0;
-    border-radius: 20px;
-    display: none;
+    width:400px;
+    position:absolute;
+    background-color:#555;
+    right:0;
+    border-radius:20px;
+    display:none;
 }
 
 .middleHeader .cart-products{
-    padding: 20px;
+    padding:20px;
 }
 
 .middleHeader .product-item{
-    display: flex;
+    display:flex;
     justify-content: space-between;
     align-items: center;
-    height: 100px;
+    height:100px;
 }
-
 .middleHeader .product-item img{
-    border-radius: 50%;
-    height: 50px;
+    border-radius:50%;
+    height:50px;
     width:50px;
 }
-
+.middleHeader .product-body{
+}
 .middleHeader .product-name{
-    font-size: 20px;
+    font-size:20px;
 }
-
 .middleHeader .productQuantityPrice{
-    display: flex;
+    display:flex;
     justify-content: space-between;
-    font-size: 16px;
-    margin-top: 10px;
+    font-size:16px;
+    margin-top:10px;
 }
-
 .middleHeader .price{
-    color: black;
+    color:black;
 }
-
 .middleHeader .quantityProductCart{
-    color: black;
+    color:black;
 }
-
 .middleHeader .deleteCart{
-    font-size: 18px;
+    font-size:18px;
 }
 
-.middleHeader .deleteCart:hover{
-    color: red;
+.middleHeader .deleteCart:hover {
+    color:red;
     cursor: pointer;
 }
-
 .middleHeader .totalprice{
     text-align: right;
-    margin-right: 20px;
+    margin-right:20px;
     font-size:22px;
 }
-
 .middleHeader .pay{
     width:100%;
-    height: 30px;
-    background-color: black;
-    color: white;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 20px;
+    height:30px;
+    background-color:black;
+    color:white;
+    margin-top:10px;
+    margin-bottom:10px;
+    font-size:20px;
     border: none;
 }
 
 .middleHeader .pay:hover{
-    background-color: gray;
+    background-color:gray;
     cursor: pointer;
 }
-
 .header .rightHeader{
     position:relative;
 }
